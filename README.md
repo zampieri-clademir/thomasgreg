@@ -88,7 +88,7 @@ O sistema será capaz de criar, editar, remover e visualizar informações de cl
 ### Para a Entrega
 - Especificação do hardware para os servidores de aplicação e banco de dados, baseada em análises detalhadas e números projetados, assegurando que os recursos sejam adequados para o ambiente de produção.
 
-## Frameworkde e Componentes Utilizados
+## Frameworks e Tecnologias Utilizadas
 
 - .NET 8.0
 - Entity Framework 8
@@ -151,11 +151,15 @@ O sistema será capaz de criar, editar, remover e visualizar informações de cl
 - Envolver o time responsável para a criação de uma documentação detalhada sobre as funcionalidades da aplicação.
 
 ### API REST
-
 - A documentação da API está disponível em [API Documentation](https://zampiericlademir.docs.apiary.io/#).
 - Implementar um bloqueio de 5 minutos após 3 tentativas de autenticação inválidas.
 - Os endpoints serão protegidos através de autenticação com JWT Token.
 - Seguir as recomendações de performance mencionadas no link acima.
+
+### Banco de Dados
+- Seguir a estrutura de tabelas sugerida na POC.
+- No caso da utilização do SQL como repositório dos logotipos então prever a criação do tabela em um filegroup separado.
+- Realizar a criação dos indices necessários para atender as consultas feitas pela API.
 
 ### Portal Web
 - O portal deve ser implementado com ASP.NET Core MVC e Razor.
