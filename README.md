@@ -11,18 +11,17 @@
 
 - [Descrição do Projeto](#descrição-do-projeto)
 - [Funcionalidades](#funcionalidades)
-- [Aplicação](#aplicação)
-- [Ferramentas Utilizadas](#ferramentas-utilizadas)
-- [Acesso ao Projeto](#acesso-ao-projeto)
-- [Como Abrir e Rodar o Projeto](#como-abrir-e-rodar-o-projeto)
-- [Desenvolvedores](#desenvolvedores)
+- [Requisitos Não Funcionais](#requisitos-não-funcionais)
+- [Pré-Requisitos](#pré-requisitos)
+- [Frameworkde e Componentes Utilizados](#frameworkde-e-componentes-utilizados)
+- [Orientações aos Desenvolvedores](#orientações-aos-desenvolvedores)
 
 ## Descrição do Projeto
 
 <p align="justify">
- Projeto em desenvolvimento para a empresa Thomas Greg. Este projeto visa implementar um sistema de cadastro de clientes.
+Este projeto, em desenvolvimento para a empresa Thomas Greg, tem como objetivo a implementação de um robusto sistema de cadastro de clientes.
  
- O sistema permitirá criar, editar, remover e visualizar clientes em um portal web. Além da implementação do portal, também faz parte deste projeto a criação de uma API REST que suportará um grande número de requisições.
+O sistema será capaz de criar, editar, remover e visualizar informações de clientes em um portal web intuitivo e eficiente. Além do portal, o projeto inclui a construção de uma API REST escalável, projetada para suportar um grande volume de requisições, garantindo alta performance e disponibilidade.
 </p>
 
 ## Funcionalidades
@@ -63,8 +62,7 @@
 - Deve haver mecanismos para prevenir ataques como SQL Injection, Cross-Site Scripting (XSS), e Cross-Site Request Forgery (CSRF).
 
 ### Disponibilidade
-- A API deve ter alta disponibilidade, com uma meta de uptime de 99.9% ou superior.
-- Deve haver planos de contingência e recuperação de desastres para garantir a continuidade do serviço em caso de falhas.
+- A API deve ter alta disponibilidade.
 
 ### Manutenibilidade
 - O código da API deve ser modular, bem documentado e fácil de manter e atualizar.
@@ -81,16 +79,16 @@
 ## Pré-requisitos
 
 ### Para Início da Implementação
-- Definição do layout do portal pelo time de UX Design.
+- Finalização do layout do portal pelo time de UX Design, garantindo uma interface intuitiva e centrada no usuário.
+- Determinação do local de armazenamento dos arquivos de logotipo, com base em análises de desempenho e custo. A recomendação é utilizar um serviço de storage na nuvem, como Amazon S3 ou Azure Blob Storage, armazenando apenas a URL do arquivo no banco de dados para otimização de recursos.
 
 ### Para Início dos Testes em Ambiente de Desenvolvimento
-- Definição, com base em estimativas e orçamentos, da infraestrutura a ser utilizada, seja em nuvem pública ou privada. Considerar também a necessidade de treinamento do time na tecnologia escolhida.
-- Definição, com base em estimativas, do local de armazenamento dos arquivos de logotipo, preferencialmente em um storage na nuvem (como Amazon S3 ou Azure Blob Storage), mantendo apenas a URL do arquivo no banco de dados.
+- Definição da infraestrutura necessária, levando em consideração estimativas de desempenho e orçamentos. A escolha entre nuvem pública ou privada deve ser feita com base nesses fatores, incluindo a necessidade de capacitação do time na tecnologia selecionada.
 
 ### Para a Entrega
-- Definição do hardware dos servidores de aplicação e banco de dados com base em números.
+- Especificação do hardware para os servidores de aplicação e banco de dados, baseada em análises detalhadas e números projetados, assegurando que os recursos sejam adequados para o ambiente de produção.
 
-## Ferramentas Utilizadas
+## Frameworkde e Componentes Utilizados
 
 - .NET 8.0
 - Entity Framework 8
@@ -101,21 +99,36 @@
 - JavaScript
 - GitHub Actions
 - NUnit
+- JSON Web Token
+- Mediator
+- Arquitetura em Camadas
 
 ## Orientações aos Desenvolvedores
 
 ### Arquitetural Decisions Records
 
-- **Decisão 1**: Utilização do Application Insights para monitoramento da API.
-- **Decisão 2**: Criação da API no padrão REST para receber e disponibilizar os dados dos clientes.
-- **Decisão 3**: Devido ao fato de o serviço trabalhar com dados que não são de natureza pessoal, segundo a LGPD, existe a possibilidade de termos a infraestrutura fora do Brasil, impactando assim positivamente nos custos.
-- **Decisão 4**: Utilização do Entity Framework como ORM para a aplicação.
-- **Decisão 5**: Utilização de um gateway para a API com rate limiter para evitar consumo indevido e indisponibilidade e gastos não previstos. Necessário devido à API ser aberta.
-- **Decisão 6**: Utilização do SonarQube para análise de código.
-- **Decisão 7**: Utilização dos pacotes NUnit e Moq para a criação de testes unitários e testes integrados.
-- **Decisão 8**: Utilização do Selenium para automatização dos testes de tela e de sistema.
-- **Decisão 9**: Utilizar o componente Serilog para a criação de logs da API.
-- **Decisão 10**: Caso seja decidido utilizar o SQL Server para armazenar os logotipos criar um filegroup separado com seu próprio FileDisk.
+- **Decisão 1**: Adotar o Application Insights para monitoramento e telemetria da API, proporcionando visibilidade detalhada sobre o desempenho, erros e métricas de uso.
+
+- **Decisão 2**: Desenvolver a API seguindo o padrão RESTful, garantindo a interoperabilidade e a facilidade de integração para a gestão e disponibilização dos dados dos clientes.
+
+- **Decisão 3**: Considerando que o serviço lida com dados não classificados como pessoais segundo a LGPD, optar por uma infraestrutura hospedada fora do Brasil, visando a otimização de custos operacionais.
+
+- **Decisão 4**: Utilizar o Entity Framework como ORM (Object-Relational Mapper) para facilitar a manipulação de dados e acelerar o desenvolvimento com uma abordagem orientada a objetos.
+
+- **Decisão 5**: Implementar um gateway para a API com funcionalidades de rate limiting, assegurando o controle de consumo, evitando abusos e prevenindo indisponibilidades, especialmente por se tratar de uma API pública.
+
+- **Decisão 6**: Adotar o SonarQube para análise contínua da qualidade do código, garantindo a identificação e correção de potenciais bugs, vulnerabilidades e melhorias no código.
+
+- **Decisão 7**: Utilizar os pacotes NUnit e Moq para o desenvolvimento de testes unitários e integrados, assegurando a robustez e a confiabilidade do código através de testes automatizados.
+
+- **Decisão 8**: Empregar o Selenium para a automação dos testes de interface e sistema, garantindo que todas as funcionalidades atendam aos requisitos de usabilidade e comportamento esperados.
+
+- **Decisão 9**: Utilizar o Serilog como ferramenta de logging para a API, permitindo a criação de logs estruturados e eficientes para monitoramento e auditoria.
+
+- **Decisão 10**: Caso o SQL Server seja escolhido para o armazenamento dos logotipos, criar um filegroup separado com um FileDisk dedicado, otimizando o desempenho e a organização dos dados de imagem.
+
+- **Decisão 11**: A entrega final do sistema deverá ser realizada utilizando containers, garantindo portabilidade, consistência nos ambientes de execução e facilitando o processo de deploy.
+
 
 
 ### Design de Código
